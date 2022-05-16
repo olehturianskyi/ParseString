@@ -61,6 +61,29 @@ namespace ParseString
 
             //разбиваем  новый текст на слова (в массив строк)
             textArray = newtext.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            newtext = "";
+            // Блин, не меняются буквы(((((
+            for (int i = 0; i < textArray.Length; i++)
+            {
+                if (textArray[i].StartsWith("T") || textArray[i].StartsWith("т"))
+                {
+                    string str1 = textArray[i].Substring(0, 1);
+                    string str2 = textArray[i].Substring(1);
+                    str1 = "C";
+                    textArray[i] = str1 + str2;
+                }
+                
+               
+                
+                
+               
+                newtext = newtext + textArray[i] + " ";
+            }
+            Console.WriteLine("Letters have been replaced according to the condition: ");
+            Console.WriteLine("     " + newtext);
+            Console.WriteLine();
+
+
 
             // В каждом нечетном слове переставляем буквы в обратном порядке
             newtext = "";
@@ -77,6 +100,7 @@ namespace ParseString
             Console.WriteLine("Odd words are written backwards: ");
             Console.WriteLine("     " + newtext);
             Console.WriteLine();
+
 
             // Console.WriteLine("Processed text: " + newtext);
             // Console.WriteLine();
