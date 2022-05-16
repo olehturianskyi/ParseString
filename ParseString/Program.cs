@@ -62,28 +62,28 @@ namespace ParseString
             //разбиваем  новый текст на слова (в массив строк)
             textArray = newtext.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             newtext = "";
-            // Блин, не меняются буквы(((((
+            // Заменяем буковки, согласно условию
             for (int i = 0; i < textArray.Length; i++)
-            {
-                if (textArray[i].StartsWith("T") || textArray[i].StartsWith("т"))
+            {                
+                if (textArray[i].StartsWith("Т",StringComparison.InvariantCultureIgnoreCase))
                 {
                     string str1 = textArray[i].Substring(0, 1);
                     string str2 = textArray[i].Substring(1);
                     str1 = "C";
                     textArray[i] = str1 + str2;
                 }
-                
-               
-                
-                
-               
+                if (textArray[i].EndsWith("и", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    int length = textArray[i].Length;
+                    string str1 = textArray[i].Substring(0, length - 1);
+                    string str2 = "О";                    
+                    textArray[i] = str1 + str2;
+                }
                 newtext = newtext + textArray[i] + " ";
             }
             Console.WriteLine("Letters have been replaced according to the condition: ");
             Console.WriteLine("     " + newtext);
             Console.WriteLine();
-
-
 
             // В каждом нечетном слове переставляем буквы в обратном порядке
             newtext = "";
@@ -101,9 +101,6 @@ namespace ParseString
             Console.WriteLine("     " + newtext);
             Console.WriteLine();
 
-
-            // Console.WriteLine("Processed text: " + newtext);
-            // Console.WriteLine();
             Console.WriteLine("Text contains " + textArray.Length + " words");
             Console.WriteLine();
 
