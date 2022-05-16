@@ -4,6 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ Ввести в консоль текст и распарсить ее как строку. Текст должен состоять
+минимум из 5 слов разделенных пробелом:
+1) Удалить все цифры из текста и в каждом нечетном слове заменить буквы
+в обратном порядке
+2) Преобразовать эту строку так, чтобы в каждом слове текста первая буква
+была в верхнем регистре, а остальная часть слов в нижнем.
+3) Если слово начинается с буквы ‘Т’, то заменить ее на ‘С’. Если
+заканчивается на ‘И’ то заменить на ‘О’. Заменять на буквы в верхнем
+регистре, но исходное значение буквы не учитывает регистр. Например
+не важно это ‘т’ или ‘Т’ то все равно заменить на С’.
+ */
+
 namespace ParseString
 {
     internal class Program
@@ -59,10 +72,7 @@ namespace ParseString
                     Array.Reverse(chars);
                     textArray[i] = new string(chars);                               
                 }
-                newtext = newtext + textArray[i] + " ";
-                
-
-
+                newtext = newtext + textArray[i] + " ";            
             }
             Console.WriteLine("Odd words are written backwards: ");
             Console.WriteLine("     " + newtext);
